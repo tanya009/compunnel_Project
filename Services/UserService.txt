@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UserDetails.Model;
+
+namespace UserDetails.Services
+{
+    public interface UserService
+    {
+        List<StateDetails> getStateDetails();
+        bool putUserInfo(UserInfo item);
+        List<UserInfo> getUserDetails();
+        bool deleteUserDetail(String id);
+        bool modifyUserDetails(UserInfo item);
+    }
+}

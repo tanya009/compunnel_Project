@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Details</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/controller.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <style>
+        .name-tag {
+            font-size: large;
+            vertical-align: text-bottom;
+            align-self: center;
+            font-weight: bold;
+        }
+        form>.row {
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <div class="container" style="padding:25px">
+        <form name="myForm">
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Name
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Enter Name Here" ng-model="item.name" name="name" required/>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                        <span ng-show="myForm.name.$error.required">Name is required.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Age
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <input type="number" class="form-control" placeholder="Enter Age Here" ng-model="item.age" name="age" required />
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <span style="color:red" ng-show="myForm.age.$dirty && myForm.age.$invalid">
+                        <span ng-show="myForm.age.$error.required">Age is required.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Gender
+                </div>
+                <div class="col-md-6 col-xs-12 row">
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.gender" type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label><br>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.gender" type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.gender" type="radio" id="trans" name="gender" value="trans">
+                        <label for="other">Trans</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Email
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <input type="email" class="form-control" placeholder="Enter Email Here" ng-model="item.email" name="email" required/>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Email is required.</span>
+                        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    State
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <select class="form-control" name="state" id="state" ng-model="item.stateObj" required ng-options="state as state.name for state in states">
+                    </select>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <span style="color:red" ng-show="myForm.state.$dirty && myForm.state.$invalid">
+                        <span ng-show="myForm.state.$error.required">Please select a state</span>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Upload Resume
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <input id ="files" type="file" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12 name-tag">
+                    Education
+                </div>
+                <div class="col-md-6 col-xs-12 row">
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.istenth" type="checkbox" id="highSchool" name="highSchool" value="highSchool">
+                        <label for="highSchool"> 10th</label><br>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.istwelth" type="checkbox" id="highsecSchool" name="highsecSchool" value="highsecSchool">
+                        <label for="highsecSchool"> 12th</label><br>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.isdegree" type="checkbox" id="degree" name="degree" value="degree">
+                        <label for="degree"> Degree</label><br>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <input ng-model="item.ismaster" type="checkbox" id="masters" name="masters" value="masters">
+                        <label for="masters"> Masters</label><br>
+                    </div>
+                 </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-primary" ng-disabled="myForm.$invalid" style="margin-right:20px" ng-click="submitForm(item)">Submit</button>
+                <button class="btn btn-danger" >Clear</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

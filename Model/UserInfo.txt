@@ -1,0 +1,29 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace UserDetails.Model
+{
+    public class UserInfo
+    {
+        [BsonId]
+        public ObjectId Id { get; set; }
+        [BsonElement("Name")]
+        public String Name { get; set; }
+        [BsonElement("Age")]
+        public int Age { get; set; }
+        [BsonElement("Gender")]
+        public String Gender { get; set; }
+        [BsonElement("Email")]
+        public String Email { get; set; }
+        [BsonElement("StateObj")]
+        public StateDetails StateObj { get; set; }
+        [BsonElement("Education")]
+        public List<String> Education { get; set; }
+
+
+    }
+}

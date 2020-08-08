@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace UserDetails.Model
+{
+    public class StateDetails
+    {
+        [BsonId]
+        public ObjectId Id { get; set; }
+        [BsonElement("RefId")]
+        public int RefId { get; set; }
+        [BsonElement("Name")]
+        public String Name { get; set; }
+    }
+}

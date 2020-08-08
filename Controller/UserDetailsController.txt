@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using UserDetails.Model;
+using UserDetails.Services;
+
+namespace UserDetails.Controller
+{
+    [Route("v1")]
+    [ApiController]
+    public class UserDetailsController : ControllerBase
+    {
+        private readonly UserService serviceObj;
+        public UserDetailsController(UserService s)
+        {
+            serviceObj = s;
+        }
+
+        [HttpGet]
+        [Route("GetStateDetails")]
+        public ActionResult<List<StateDetails>> getStateDetails()
+        {
+            List<StateDetails> returnObj = serviceObj.getStateDetails();
+            return returnObj;
+        }
+
+        [HttpPost]
+        [Route("PutUserDetails")]
+        public ActionResult<Boolean> putUserDetails(UserInfo item)
+        {
+            Boolean returnObj = serviceObj.putUserInfo(item);
+            return returnObj;
+        }
+
+        [HttpGet]
+        [Route("GetUserDetails")]
+        public ActionResult<List<UserInfo>> getUserDetails()
+        {
+            List<UserInfo> returnObj = serviceObj.getUserDetails();
+            return returnObj;
+        }
+
+        [HttpDelete]
+        [Route("DeleteUserDetails")]
+        public ActionResult<Boolean> deleteUserDetail(String id)
+        {
+            Boolean returnObj = serviceObj.deleteUserDetail(id);
+            return returnObj;
+        }
+
+        [HttpPost]
+        [Route("ModifyUserDetail")]
+        public ActionResult<Boolean> updateUserDetails(UserInfo item)
+        {
+            Boolean returnObj = serviceObj.modifyUserDetails(item);
+            return returnObj;
+        }
+    }
+}
